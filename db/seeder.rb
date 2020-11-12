@@ -33,7 +33,7 @@ class Seeder
 
     def add_data
         @db.execute("INSERT INTO users (name, pwdhash, role) 
-        VALUES('Guest', 'hashedthing', 'guest');")
+        VALUES('Guest', 'guestpass', 'guest');")
         @db.execute("INSERT INTO users (name, mail, adress, pwdhash, imgpath, join_date, phone, role, hardest_boulder, hardest_lead) 
         VALUES('Alexander Kjellberg', '01Alexanderkjellberg@gmail.com', 'Norra Källåsvägen 35', 'hej', 'alexander_kjellberg_profile.jpg', 'När klubben startades', '0769463848', 'Ledj', '7B', '7b+');")
         puts "Added standardized users"
