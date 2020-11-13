@@ -1,17 +1,85 @@
 class User
 
-    def initialize
-        @id = 1
-        @name = 'Guest'
+    def initialize(id)
+        @user_data = Dbhandler.get_all(id).first
+        @id = id
     end
 
-    def login(mail, pwd)
-        puts "#####################################################"
-        puts "entered #{mail} and #{pwd}"
+    # returns the user id if the login is successful, otherwise it will return 'guest'
+    def self.login(mail, pwd)
+        data = Dbhandler.get_login_data(mail)
+        if data.first[2] != 'pending'
+            if BCrypt::Password.new(data.first[1]) == pwd
+                return data.first[0]
+            end
+        end
+        return 'guest'
     end
 
-    def get
-        SQLite3::Database.new('db/le_dat.db').execute("SELECT id, name, role FROM users WHERE name = ?;", @id)
+    def self.register(name, phone, adress, mail, pwd1, pwd2, motivation)
+        if User.exist?(mail)
+            return "Den angivna mailadressen används redan!"
+        elsif pwd1 != pwd2
+            return "Lösenorden matchar inte!"
+        end
+        pwdhash = BCrypt::Password.create(pwd1)
+        Dbhandler.member_request(name, phone, adress, mail, pwdhash, motivation)
+        return "success"
+    end
+
+    def self.exist?(mail)
+        if Dbhandler.get_login_data(mail).length > 0
+            return true
+        end
+        return false
+    end
+
+    def change_role(new_role)
+        Dbhandler.change_role(@id, new_role)
+    end
+
+    def id
+        @id
+    end
+
+    def name
+        @name
+    end
+
+    def mail
+        @mail
+    end
+
+    def adress
+        @adress
+    end
+
+    def pwdhash
+        @pwdhash
+    end
+
+    def img_path
+        @img_path
+    end
+
+    def join_date
+        @join_date
+    end
+
+    def phone
+        @phone
+    end
+
+    def role
+        @role
+    end
+
+    def hardest_boulder
+        @hardest_boulder
+    end
+
+    def hardest_lead
+        @hardest_lead
     end
 
 end
