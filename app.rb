@@ -46,10 +46,9 @@ class App < Sinatra::Base
     end
 
     post '/accept_member/:id' do
-        puts "#####################################"
         user = User.new(params[:id])
         user.change_role('Member')
-        redirect('pending')
+        redirect('/pending')
     end
 
 end
