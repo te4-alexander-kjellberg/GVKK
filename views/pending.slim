@@ -1,0 +1,6 @@
+li
+    -@pending.each do |request|
+        form action="/accept_member/#{request[0]}" method="post"
+            p= request[1]
+            p= request[2]
+            button type="submit" Acceptera

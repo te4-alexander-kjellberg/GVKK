@@ -3,7 +3,26 @@ html lang="en"
     head
         meta charset="UTF-8"/
         meta name="viewport" content="width=device-width, initial-scale=1.0"/
-        title Document
+        link rel="stylesheet" href="css/main.css" type="text/css"/
+        link rel="preconnect" href="https://fonts.gstatic.com"/
+        link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet"/
+        title GV Klätterklubb
     body
-        h1 You have been transferred to layout.slim, aswell as: 
-        == yield
+        nav.nav-scroll
+            section
+                a href="/" class="big" GVKK
+            section
+                a href="#" Nyheter
+                a href="#" Medlemmar
+                a href="#" Kontakt
+            section
+                a href="/register" Bli Medlem
+                a href="/login" Logga In
+        main
+            == yield
+            footer
+                a href="#"
+                    img src="img/instagram-icon.png" alt="instagram-icon"/
+                a href="#"
+                    img src="img/mail-logo.png" alt="mail-icon"/
+        script src="js/main.js"

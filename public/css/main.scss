@@ -1,0 +1,192 @@
+$black: #262626;
+$white: #f2f2f2;
+// @mixin text {
+//     font-size: 18;
+// }
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    background-color: $white;
+    
+    h1 {
+        font-size: 36px;
+        font-weight: 600;
+    }
+
+    h3 {
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    p {
+        font-size: 18px;
+        font-weight: 400;
+    }
+}
+
+.nav-top {
+    background-image: linear-gradient(#000000, #000000af, #00000088, #00000000);
+    height: 8vh;
+}
+
+.nav-scroll {
+    background-color: $black;
+}
+
+nav {
+    height: 8vh;
+    width: 100vw;
+    position: fixed;
+    top: 0px;
+    display: flex;
+    justify-content: space-around;
+    transition: 200ms;
+
+    section {
+        margin-top: 9px;
+        width: 33%;
+        display: flex;
+        justify-content: center;
+
+        a {
+            text-decoration: none;
+            margin: 8px;
+            font-size: 18px;
+            font-weight: 300;
+            color: $white;
+        }
+
+        a.big {
+            margin: 0;
+            font-weight: 600;
+            font-size: 30px;
+        }
+    }
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: minmax(92vh, auto) 8vh;
+
+    .about-container {
+        display: grid;
+
+        .hero {
+            height: 70vh;
+            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.5);
+
+            .hero-img {
+                width: inherit;
+                height: inherit;
+                background-image: url("../img/hero4.jpeg");
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        }
+
+        .info-text {
+            width: 70vw;
+            height: auto;
+            margin: auto;
+            padding-bottom: 20px;
+        }
+    }
+
+    .form-container {
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+
+        form {
+            width: 30vw;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            display: grid;
+            grid-row-gap: 15px;
+            padding: 30px;
+            color: $black;
+
+            section.method-selection {
+                width: 20vw;
+                margin: auto;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+            }
+
+            section {
+                display: flex;
+                justify-content: space-between;
+                
+                input {
+                    width: 47%;
+                }
+            }
+
+            input {
+                height: 5vh;
+                background: #ebebeb;
+                border-radius: 7px;
+                border: none;
+                display: inline-block;
+                text-align: center;
+
+                &:focus {
+                    background: #e4ecf8;
+                    outline-width: 0;
+                }
+            }
+
+            textarea {
+                height: auto;
+                min-height: 10vh;
+                word-wrap: break-word;
+                font-family: 'Open Sans', sans-serif;
+                border: none;
+                background: #ebebeb;
+                border-radius: 7px;
+
+                &:focus {
+                    background: #e4ecf8;
+                    outline-width: 0;
+                }
+            }
+
+            button {
+                height: 5vh;
+                width: 10vw;
+                margin: auto;
+                font-size: 100%;
+                border-radius: 7px;
+                background-color:#4287f5;
+                color: $white;
+                border: none;
+            }
+        }
+    }
+
+    footer {
+        background-color: $black;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        a {
+            width: 40px;
+            height: 40px;
+
+            img {
+                width: inherit;
+                height: inherit;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+        }
+    }
+}

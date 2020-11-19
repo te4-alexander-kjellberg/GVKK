@@ -7,3 +7,4 @@ gem "rack"
 gem 'sqlite3'
 gem 'tmpdir'
 gem 'bcrypt'
+gem 'session'
