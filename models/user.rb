@@ -8,11 +8,12 @@ class User
     # returns the user id if the login is successful, otherwise it will return 'guest'
     def self.login(mail, pwd)
         data = Dbhandler.get_login_data(mail)
-        if data.first[2] != 'pending'
+        if data.length > 0 && data.first[2] != 'pending'
             if BCrypt::Password.new(data.first[1]) == pwd
                 return data.first[0]
             end
         end
+        @msg = 'login failed'
         return 'guest'
     end
 
@@ -24,7 +25,7 @@ class User
         end
         pwdhash = BCrypt::Password.create(pwd1)
         Dbhandler.member_request(name, phone, adress, mail, pwdhash, motivation)
-        return "success"
+        return true
     end
 
     def self.exist?(mail)
